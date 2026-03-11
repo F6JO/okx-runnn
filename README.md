@@ -28,7 +28,7 @@
 
 ## 常用命令
 
-实时监控：
+实时监控，可存在多个-P参数：
 
 ```bash
 python3 main.py monitor run -P "symbol=btc,type=swap,frames=15m|1h,strategies=ai_mysmc,interval=900"
