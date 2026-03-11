@@ -1,0 +1,34 @@
+okx:
+  api_key: 
+  api_secret: 
+  api_password: 
+
+talk_ding_token: 
+
+data_dir: data/
+debug: false
+thread_workers: 10
+api_max_retries: 10
+proxy: "socks5://127.0.0.1:7890"
+
+monitor:
+  default_history_days:
+    1m: 60
+    5m: 120
+    15m: 180
+    30m: 240
+    1h: 365
+    2h: 540
+    4h: 720
+    6h: 900
+    12h: 1095
+    1d: 1460
+    1w: 1825
+
+# 初始化后放在全局的AI_CLIENTS中，以字典格式，值为OpenAiApi对象
+ai: 
+  deepseek:
+    base_url: http://127.0.0.1:5001/v1
+    api_key: 
+    model: deepseek-reasoner-search
+    enable_think: true

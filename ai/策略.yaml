@@ -1,0 +1,43 @@
+trading_systems:
+  smc_15m_5m_logic:
+    system_name: "SMC 15m/5m 联动入场系统"
+    description: "基于15分钟趋势定位，5分钟CHoCH精确切入"
+    
+    checkpoints:
+      - title: "15m 实体内部结构突破 (BOS)"
+        is_required: true
+        remark: "必须是实体收盘穿过明确的结构线，确保不是假突破（扫损）。"
+        
+        sub_items:
+          - title: "15m 突破前是否扫取了流动性"
+            is_required: false
+            remark: "扫取流动性的动作为对前方高点或低点进行插针"
+
+          - title: "15m 突破是否带有强劲动能"
+            is_required: false
+            remark: "结构突破时是否为大阳线/大阴线"
+
+      - title: "15m 突破处留有 FVG (失衡区)"
+        is_required: true
+        remark: "FVG为三根k线组成，分别为突破k线的前一根和后一根。如果是上涨突破，则前一根k线的最高价与后一根k线的最低价中间是否留有空间，如果有则为FVG。如果是下跌突破，则前一根k线的最低价与后一根k线的最高价中间是否留有空间，如果有则有FVG。"
+
+      - title: "价格已回踩 15m FVG 区域"
+        is_required: true
+        remark: "回踩的那一根k线为突破的那根k线的后第二根k线（因为第一根k线需要做FVG的判断），只有第二根k线打入此区域且未实体穿透（可以插针穿透），才切换到 5m 寻找信号。"
+
+      - title: "5m 出现对应的结构改变 (CHoCH/BOS) 并留有 FVG"
+        is_required: true
+        remark: "5m 必须也出现一次结构破坏，证明 15m 的回调已经结束。"
+
+      - title: "5m 价格确认回踩其对应的 FVG"
+        is_required: true
+        remark: "这是你精确的切入点。"
+        
+        sub_items:
+          - title: "回调期间是否没有产生fvg"
+            is_required: false
+            remark: "回调期间没有fvg说明是流动性，后面大概率会去提取这些流动性"
+
+      - title: "确认盈亏比高于 1.6"
+        is_required: true
+        remark: "确认止盈位与止损位，如以上所有is_required标记为true的选项都满足，则推送"
